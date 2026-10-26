@@ -34,4 +34,6 @@ AI 用于辅助代码实现、规则核对和美术生成；系统取舍围绕�
 
 ## 在线入口
 
-[浏览器在线试玩](https://wumengyanzhi.github.io/) · [项目仓库](https://github.com/wumengyanzhi/wumengyanzhi.github.io)
+[浏览器在线试玩](https://wumengyanzhi.github.io/) · [备用试玩入口](https://rawcdn.githack.com/wumengyanzhi/wumengyanzhi.github.io/resume-demo-20261026/cdn/index.html) · [项目仓库](https://github.com/wumengyanzhi/wumengyanzhi.github.io)
+
+备用入口首次访问时可能显示分发服务的确认页，确认后进入游戏。两个入口的进度分别保存在各自网站的浏览器本地存储中。

@@ -1,0 +1,34 @@
+[
+  {
+    "family": "Pojun Brush",
+    "file": "poj-brush.woff2",
+    "bytes": 489984,
+    "glyphs": 1247,
+    "runtimeChineseCharacters": 1127,
+    "missingChineseCharacters": 1,
+    "fallbackCharacters": [
+      "惇"
+    ],
+    "fallbackFamily": "Pojun Text",
+    "source": "https://github.com/google/fonts/tree/main/ofl/mashanzheng",
+    "sourceFile": "MaShanZheng-Regular.ttf",
+    "sourceSHA256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+    "license": "MaShanZheng-OFL.txt",
+    "modification": "Runtime character subset, WOFF2 conversion, renamed family and PostScript names. Original copyright and OFL retained."
+  },
+  {
+    "family": "Pojun Text",
+    "file": "poj-text.woff2",
+    "bytes": 270112,
+    "glyphs": 1338,
+    "runtimeChineseCharacters": 1127,
+    "missingChineseCharacters": 0,
+    "fallbackCharacters": [],
+    "fallbackFamily": null,
+    "source": "https://github.com/lxgw/LxgwWenKai-Lite",
+    "sourceFile": "LXGWWenKaiLite-Regular.ttf",
+    "sourceSHA256": "f799a538a3355877e597a0ae04050e897932c9ae7689eb9227c2953c5dd549ea",
+    "license": "LXGWWenKai-OFL.txt",
+    "modification": "Runtime character subset, WOFF2 conversion, renamed family and PostScript names. Original copyright and OFL retained."
+  }
+]
