@@ -1,7 +1,7 @@
 /* Battle information stays in permanent regions, including ordinary encounters. */
 .v2-battle-fixed {
   isolation: auto;
-  background: radial-gradient(ellipse at 45% 42%, #526b4024, transparent 65%), linear-gradient(#14231cf0, #14231cf0), url('/art/campaign.png') center / cover;
+  background: radial-gradient(ellipse at 45% 42%, #526b4024, transparent 65%), linear-gradient(#14231cf0, #14231cf0), var(--campaign-art, url('/art/campaign.webp')) center / cover;
   --battle-card-width: clamp(96px, calc((100dvh - 500px) * .37), 148px);
   grid-template-rows: 84px 52px minmax(0, 1fr) 44px calc(var(--battle-card-height) + 54px) 64px;
   grid-template-areas: 'hud hud' 'intel intel' 'formation skills' 'notice skills' 'hand skills' 'command command';

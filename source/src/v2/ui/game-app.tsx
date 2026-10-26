@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import type { CSSProperties } from 'react';
 import type { CardDef, GameAction, RunState } from '../model';
 import { CARD_MAP, DECKS } from '../data';
 import { act, createRun } from '../engine';
@@ -26,6 +27,7 @@ import { normalizeOperations } from './operation-settings';
 import { useTutorial } from './use-tutorial';
 import { InteractiveTutorial } from './tutorial-screen';
 import { ONBOARDING_KEY, shouldOfferTutorial } from './first-visit';
+import { useArtwork } from './use-artwork';
 
 type View = 'menu' | 'new' | 'game' | 'codex' | 'history' | 'settings' | 'tutorial';
 function savedRun(): { state: RunState | null; raw: string | null; error: string } {
@@ -43,6 +45,7 @@ function loadHistory(): HistoryEntry[] { try { const raw: unknown = JSON.parse(l
 function sound(kind: string) { window.dispatchEvent(new CustomEvent('v2:sound', { detail: { kind } })); }
 
 export default function GameApp({ initialState }: { initialState?: RunState } = {}) {
+  const campaignArt = useArtwork('campaign');
   const [loaded] = useState(savedRun);
   const baseline = useRef(loaded.raw);
   const [state, setState] = useState<RunState | null>(initialState ?? loaded.state);
@@ -125,7 +128,7 @@ export default function GameApp({ initialState }: { initialState?: RunState } = 
     setWelcomeError(''); setWelcomeOpen(false);
     if (learn) { tutorial.dispatch({ type: 'next' }); setView('tutorial'); }
   };
-  return <CardInspector disabled={view === 'tutorial' && !['intro', 'practice', 'complete', 'skipped'].includes(tutorial.session?.step ?? 'intro')} cards={visibleState?.cards} holdMs={settings.touchHoldMs} onInspect={recordInspection} contextKey={`${view}-${loadEpoch}-${tutorial.epoch}-${visibleState?.revision ?? 0}-${!!cardDetail}-${deckOpen}`}><div className={`v2-app ${view === 'game' && state?.phase === 'battle' ? 'v2-in-battle' : ''} ${settings.animation ? '' : 'v2-reduced-motion'}`}><div className="v2-app-content" inert={welcomeOpen} aria-hidden={welcomeOpen ? true : undefined}>
+  return <CardInspector disabled={view === 'tutorial' && !['intro', 'practice', 'complete', 'skipped'].includes(tutorial.session?.step ?? 'intro')} cards={visibleState?.cards} holdMs={settings.touchHoldMs} onInspect={recordInspection} contextKey={`${view}-${loadEpoch}-${tutorial.epoch}-${visibleState?.revision ?? 0}-${!!cardDetail}-${deckOpen}`}><div className={`v2-app ${view === 'game' && state?.phase === 'battle' ? 'v2-in-battle' : ''} ${settings.animation ? '' : 'v2-reduced-motion'}`} style={{ '--campaign-art': `url("${campaignArt.src}")` } as CSSProperties}><img src={campaignArt.src} onError={campaignArt.onError} onLoad={campaignArt.onLoad} alt="" aria-hidden="true" style={{ display: 'none' }} /><div className="v2-app-content" inert={welcomeOpen} aria-hidden={welcomeOpen ? true : undefined}>
     {view !== 'menu' && !(view === 'game' && state?.phase === 'battle') && <header className="v2-topbar"><button className="v2-wordmark" onClick={() => view === 'game' ? setExitOpen(true) : setView('menu')}>五阵<span>破军</span></button>{view === 'game' && state ? <><CampaignProgress state={state} /><div className="v2-topbar-tools"><button onClick={() => setDeckOpen(true)}>牌库 {state.owned.filter(id => !state.removed.includes(id)).length}</button><button aria-label="打开设置" onClick={() => navigate('settings')}>设置</button></div></> : <button onClick={() => setView(previousView)}>← 返回{previousView === 'game' ? '远征' : '主菜单'}</button>}</header>}
     {error && <div className="v2-error" role="alert"><span>{error}</span><button aria-label="关闭提示" onClick={() => setError('')}>×</button></div>}
     {view === 'menu' && <MainMenu hasSave={!!state} resume={() => setView('game')} start={() => navigate('new')} navigate={navigate} tutorialLabel={tutorial.session && !['intro', 'complete', 'skipped'].includes(tutorial.session.step) ? '继续演武 · 新手教学' : '新手演武 · 两场学会破阵'} />}

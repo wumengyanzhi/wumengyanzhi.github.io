@@ -20,7 +20,7 @@
   grid-template-rows: clamp(90px, 11.9dvh, 128px) 10px minmax(0, 1fr) 12px calc(var(--battle-card-height) + 44px) 18px clamp(68px, 11.05dvh, 104px);
   grid-template-areas: 'hud hud' '. .' 'formation rail' '. rail' 'hand rail' '. .' 'command command';
   gap: 0 16px;
-  background: radial-gradient(ellipse at 43% 44%, #475d3d55, transparent 66%), repeating-linear-gradient(168deg, transparent 0 110px, #d8c78e08 111px 112px), linear-gradient(#17251ef5,#111f18ed), url('/art/campaign.png') center / cover;
+  background: radial-gradient(ellipse at 43% 44%, #475d3d55, transparent 66%), repeating-linear-gradient(168deg, transparent 0 110px, #d8c78e08 111px 112px), linear-gradient(#17251ef5,#111f18ed), var(--campaign-art, url('/art/campaign.webp')) center / cover;
   box-shadow: inset 0 0 100px #0008, inset 0 0 0 1px #8e794a;
 }
 .v2-battle-fixed::before { display: block; position: absolute; inset: 15% auto 15% 2%; width: max(0px, calc(var(--battle-outer-left) - 56px)); background: linear-gradient(90deg,#3f341b88,#11201766); opacity: .5; border-inline: 1px solid #b39b582b; z-index: 0; pointer-events: none; filter: none; mask-image: none; }
