@@ -1,0 +1,6 @@
+{
+  "initialGold": 2,
+  "victoryGold": 1,
+  "rerollCost": 1,
+  "maxRerollsPerStage": 2
+}

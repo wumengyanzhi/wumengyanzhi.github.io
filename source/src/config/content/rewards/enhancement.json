@@ -1,0 +1,56 @@
+{
+  "candidateCount": 3,
+  "stageWeights": {
+    "first_reward": { "common": 60, "rare": 35, "legendary": 5 },
+    "second_reward": { "common": 40, "rare": 45, "legendary": 15 }
+  },
+  "tierValues": {
+    "common": { "power": 10, "amp": 1 },
+    "rare": { "power": 20, "amp": 2 },
+    "legendary": { "power": 20, "amp": 2 }
+  },
+  "allowedAttributes": {
+    "character": ["power"],
+    "weapon": ["power", "amp"],
+    "tactic_power": ["power"],
+    "tactic_amp": ["amp"]
+  },
+  "legendarySkillPool": [
+    {
+      "id": "three_kingdoms.enhancement_skill.xian_deng",
+      "name": "先登",
+      "text": "每场战斗第一次主动出战时，自身本次威力 +25。",
+      "effect": { "kind": "first_play_power", "value": 25 }
+    },
+    {
+      "id": "three_kingdoms.enhancement_skill.zhen_jun",
+      "name": "振军",
+      "text": "每场战斗第一次主动出战时，自身本次增幅 +2。",
+      "effect": { "kind": "first_play_amp", "value": 2 }
+    },
+    {
+      "id": "three_kingdoms.enhancement_skill.tong_dao",
+      "name": "同道",
+      "text": "出战时，若本次还有另一张与自身类型相同的卡，自身本次威力 +30。",
+      "effect": { "kind": "same_type_power", "value": 30 }
+    },
+    {
+      "id": "three_kingdoms.enhancement_skill.gu_feng",
+      "name": "孤锋",
+      "text": "出战时，若自身是本次唯一一张该类型卡，自身本次增幅 +3。",
+      "effect": { "kind": "unique_type_amp", "value": 3 }
+    },
+    {
+      "id": "three_kingdoms.enhancement_skill.jun_xu",
+      "name": "军需",
+      "text": "每场战斗限一次。结算后，获得 1 金币。",
+      "effect": { "kind": "once_after_resolve_gold", "value": 1 }
+    },
+    {
+      "id": "three_kingdoms.enhancement_skill.hui_xiang",
+      "name": "回响",
+      "text": "每场战斗限一次。自身第一次主动出战时，原有卡牌技能额外结算一次。",
+      "effect": { "kind": "repeat_original", "value": 1 }
+    }
+  ]
+}

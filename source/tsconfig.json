@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "types": ["vitest/globals"],
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": false,
+
+    "allowJs": false,
+    "checkJs": false,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+
+    "paths": {
+      "@config/*": ["./src/config/*"],
+      "@domain/*": ["./src/domain/*"],
+      "@app/*": ["./src/application/*"],
+      "@infra/*": ["./src/infrastructure/*"],
+      "@ui/*": ["./src/ui/*"],
+      "@shared/*": ["./src/shared/*"]
+    }
+  },
+  "include": ["src"]
+}

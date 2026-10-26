@@ -1,0 +1,52 @@
+[
+  {
+    "id": "three_kingdoms.weapon.huan_shou_dao",
+    "name": "环首刀",
+    "cardType": "weapon",
+    "rarity": "common",
+    "weaponClass": "blade",
+    "basePower": 10,
+    "baseAmp": 1,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.weapon.chang_bing_tie_qiang",
+    "name": "长柄铁枪",
+    "cardType": "weapon",
+    "rarity": "common",
+    "weaponClass": "spear",
+    "basePower": 10,
+    "baseAmp": 1,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.weapon.lie_gong",
+    "name": "猎弓",
+    "cardType": "weapon",
+    "rarity": "common",
+    "weaponClass": "bow",
+    "basePower": 10,
+    "baseAmp": 1,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.weapon.zhu_gu_yu_shan",
+    "name": "竹骨羽扇",
+    "cardType": "weapon",
+    "rarity": "common",
+    "weaponClass": "implement",
+    "basePower": 10,
+    "baseAmp": 1,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.weapon.xiu_jian",
+    "name": "袖箭",
+    "cardType": "weapon",
+    "rarity": "common",
+    "weaponClass": "hidden",
+    "basePower": 10,
+    "baseAmp": 1,
+    "effects": []
+  }
+]

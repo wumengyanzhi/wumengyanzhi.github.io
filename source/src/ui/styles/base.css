@@ -1,0 +1,344 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 1280px;
+}
+
+body {
+  background: var(--surface-0);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--size-base);
+  line-height: 1.6;
+  font-kerning: normal;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button,
+select,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+/*
+ * ---------- 外壳：中军帐案 ----------
+ * 四段高度不再写死：顶栏与底栏固定，出牌框按内容取高，手牌吃掉剩下的全部空间。
+ * 窗口矮下来的顺序是「出牌框缩 → 手牌缩到下限」，任何时候都不裁底栏、不整屏滚动。
+ */
+.app-shell {
+  position: relative;
+  height: 100dvh;
+  min-height: 480px;
+  padding: var(--shell-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--band-gap);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 50% -10%, oklch(24% 0.026 55) 0%, transparent 60%),
+    radial-gradient(90% 60% at 50% 110%, oklch(17% 0.02 40) 0%, transparent 70%),
+    var(--surface-0);
+}
+
+/* 玩家关掉动画后：动效全部归零，视觉状态照常保留 */
+.app-shell--no-anim *,
+.app-shell--no-anim *::before,
+.app-shell--no-anim *::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+}
+
+.app-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 63px, oklch(100% 0.02 85 / 0.014) 63px 64px),
+    repeating-linear-gradient(0deg, transparent 0 63px, oklch(100% 0.02 85 / 0.014) 63px 64px);
+}
+
+.app-shell > * {
+  position: relative;
+}
+
+/* ---------- 通用面板 ---------- */
+.panel {
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+}
+
+.panel-title {
+  font-size: var(--size-sm);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text-3);
+  letter-spacing: 0.16em;
+}
+
+/* ---------- 按钮 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 40px;
+  padding: 0 var(--sp-5);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-3);
+  color: var(--text);
+  font-size: var(--size-base);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--surface-4);
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  min-height: 46px;
+  border-color: oklch(52% 0.17 30);
+  background: linear-gradient(180deg, oklch(50% 0.17 30), var(--vermilion-deep));
+  color: oklch(98% 0.01 85);
+  font-size: var(--size-md);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  box-shadow: inset 0 1px 0 oklch(100% 0.05 85 / 0.22);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, oklch(56% 0.185 30), oklch(48% 0.17 30));
+  border-color: var(--gold-dim);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--line-soft);
+  color: var(--text-2);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.btn--danger {
+  border-color: oklch(46% 0.14 25);
+  background: var(--vermilion-ink);
+  color: var(--vermilion-text);
+}
+
+.btn--large {
+  min-height: 52px;
+  padding: 0 var(--sp-8);
+  font-size: var(--size-md);
+}
+
+.file-field {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--sp-5);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.file-field:hover {
+  border-color: var(--gold-dim);
+  color: var(--text);
+}
+
+.file-field input {
+  display: none;
+}
+
+/* ---------- 焦点 ---------- */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- 数值 chip ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 2px var(--sp-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-size: var(--size-xs);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.chip--jade {
+  background: var(--jade-ink);
+  border-color: oklch(44% 0.07 165);
+  color: var(--jade-text);
+}
+
+.chip--indigo {
+  background: var(--indigo-ink);
+  border-color: oklch(44% 0.07 255);
+  color: var(--indigo-text);
+}
+
+.chip--gold {
+  background: var(--gold-ink);
+  border-color: oklch(48% 0.08 85);
+  color: var(--gold-text);
+}
+
+.chip--vermilion {
+  background: var(--vermilion-ink);
+  border-color: oklch(46% 0.09 28);
+  color: var(--vermilion-text);
+}
+
+.chip--neutral {
+  background: var(--surface-3);
+  border-color: var(--line-soft);
+  color: var(--text-2);
+}
+
+/* ---------- 对话框 ---------- */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: var(--sp-6);
+  background: oklch(10% 0.02 40 / 0.72);
+  animation: fade-in var(--dur-base) var(--ease-out);
+}
+
+.dialog {
+  width: min(920px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: var(--sp-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
+  box-shadow: 0 24px 60px oklch(6% 0.02 40 / 0.6);
+  animation: rise-in var(--dur-base) var(--ease-out);
+}
+
+.dialog--narrow {
+  width: min(520px, 100%);
+}
+
+.dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+}
+
+.dialog-title {
+  font-family: var(--font-serif);
+  font-size: var(--size-lg);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.dialog-sub {
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+/* ---------- 提示条 ---------- */
+.notice {
+  padding: var(--sp-2) var(--sp-4);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--gold-ink);
+  color: var(--gold-text);
+  font-size: var(--size-sm);
+}
+
+/* 外壳里的提示浮在底栏上方：既不占用 720p 的高度预算，也不会被滚动吃掉 */
+.app-shell > .notice {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(var(--foot-h) + var(--shell-pad) + var(--sp-3));
+  z-index: 30;
+  max-width: min(720px, 78%);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 14px 30px oklch(8% 0.02 40 / 0.5);
+}
+
+.notice--error {
+  border-left-color: var(--danger);
+  background: var(--vermilion-ink);
+  color: var(--vermilion-text);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

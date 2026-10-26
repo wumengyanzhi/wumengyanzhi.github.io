@@ -1,0 +1,715 @@
+/* ---------- 顶栏三块 ---------- */
+/* 高度由内容决定、令牌只是下限：写死高度时敌人面板与资源条会溢出到出牌框上，挤掉手牌。 */
+.topbar {
+  flex: none;
+  min-height: var(--topbar-h);
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr) minmax(240px, 320px);
+  gap: var(--band-gap);
+}
+
+.topbar__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px var(--sp-3);
+  line-height: 1.3;
+}
+
+/* ---------- 三战进度 ---------- */
+.runmap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.runmap__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.runmap__pip {
+  width: 34px;
+  height: 22px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface-3);
+  display: grid;
+  place-items: center;
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.runmap__pip--reward {
+  width: 26px;
+  border-radius: 999px;
+  border-style: dashed;
+}
+
+.runmap__pip--done {
+  border-color: oklch(46% 0.1 155);
+  background: oklch(28% 0.06 155);
+  color: var(--jade-text);
+}
+
+.runmap__pip--current {
+  border-color: var(--gold);
+  background: var(--gold-ink);
+  color: var(--gold-text);
+  box-shadow: 0 0 0 2px oklch(80% 0.13 85 / 0.22);
+}
+
+.runmap__pip--future {
+  opacity: 0.72;
+}
+
+.runmap__label {
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+}
+
+.runmap__link {
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: 6px;
+  background: var(--line-soft);
+}
+
+.runmap__link--current {
+  background: linear-gradient(90deg, var(--jade-dim, var(--jade)), var(--gold-dim));
+}
+
+/* ---------- 敌人面板 ---------- */
+.enemy-panel {
+  align-items: center;
+}
+
+.enemy-panel__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.enemy-panel__name {
+  font-family: var(--font-serif);
+  font-size: var(--size-md);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.enemy-panel__hp {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.hpbar {
+  position: relative;
+  flex: 1 1 auto;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: oklch(14% 0.02 25);
+  overflow: hidden;
+}
+
+.hpbar__ghost {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    oklch(40% 0.13 25) 0 5px,
+    oklch(30% 0.1 25) 5px 10px
+  );
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.hpbar__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(180deg, oklch(58% 0.19 25), var(--danger-deep));
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.enemy-panel__numbers {
+  flex: none;
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  font-size: var(--size-sm);
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.enemy-panel__numbers strong {
+  font-size: var(--size-md);
+  color: var(--vermilion-text);
+}
+
+.enemy-panel__numbers span {
+  color: var(--text-3);
+}
+
+.enemy-panel__float {
+  position: absolute;
+  right: 0;
+  top: -4px;
+  font-family: var(--font-serif);
+  font-size: var(--size-lg);
+  color: var(--gold);
+  text-shadow: 0 2px 8px oklch(10% 0.02 40 / 0.8);
+  animation: damage-float var(--dur-slow) var(--ease-out) forwards;
+}
+
+@keyframes damage-float {
+  from {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+/* ---------- 资源条 ---------- */
+.resource-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.resource-bar .chip {
+  justify-content: center;
+  padding: 2px 6px;
+}
+
+.resource-bar .chip strong {
+  font-size: var(--size-base);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.resource-panel {
+  gap: 4px;
+}
+
+/* ---------- 出牌框带 ---------- */
+.field {
+  flex: 0 1 auto;
+  min-height: var(--field-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--sp-3) var(--sp-4);
+  gap: var(--sp-2);
+  overflow: hidden;
+}
+
+.field__head {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.field__hint {
+  font-size: var(--size-xs);
+  color: var(--text-3);
+}
+
+.field__body {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--preview-w);
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.play-slots {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--link-w) minmax(0, 1fr) var(--link-w) minmax(0, 1fr)
+    var(--link-w) minmax(0, 1fr) var(--link-w) minmax(0, 1fr);
+  align-items: center;
+  min-height: 0;
+}
+
+.play-slot {
+  position: relative;
+  display: flex;
+  height: var(--slot-h);
+  min-height: 0;
+  min-width: 0;
+}
+
+.play-slot .card {
+  width: 100%;
+  height: 100%;
+}
+
+.play-slot__empty {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--line);
+  background: repeating-linear-gradient(
+    -45deg,
+    oklch(24% 0.02 55) 0 8px,
+    oklch(20% 0.018 55) 8px 16px
+  );
+  color: var(--text-3);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.play-slot__empty span {
+  font-family: var(--font-serif);
+  font-size: var(--size-md);
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+}
+
+.play-slot__empty small {
+  font-size: var(--size-xs);
+  letter-spacing: 0.1em;
+}
+
+.play-slot__empty:hover:not(:disabled) {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+.play-slot__empty:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+/* 格序标记移到卡位上方：压在卡面上会正好盖住威力／增幅那两行数字。 */
+.play-slot__index {
+  position: absolute;
+  left: 50%;
+  top: -9px;
+  translate: -50% 0;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  border: 1px solid var(--line-soft);
+  color: var(--text-3);
+  font-size: var(--size-xs);
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+}
+
+.play-slot__owned .card {
+  box-shadow: inset 0 0 0 1px var(--jade-dim, oklch(50% 0.1 165));
+}
+
+/* ---------- 连营线 ---------- */
+.play-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.play-link__label {
+  font-size: var(--size-xs);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.play-link__line {
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+}
+
+.play-link__value {
+  font-size: var(--size-xs);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.play-link--linked .play-link__label,
+.play-link--linked .play-link__value {
+  color: var(--relation-color, var(--jade));
+}
+
+.play-link--linked .play-link__line {
+  background: var(--relation-color, var(--jade));
+}
+
+.play-link--broken .play-link__label,
+.play-link--broken .play-link__value {
+  color: var(--text-3);
+}
+
+.play-link--broken .play-link__line {
+  background: repeating-linear-gradient(90deg, var(--line-soft) 0 4px, transparent 4px 8px);
+}
+
+.play-link--neutral .play-link__label,
+.play-link--neutral .play-link__value {
+  color: var(--text-3);
+}
+
+.play-link--neutral .play-link__line {
+  background: var(--line);
+}
+
+.play-link--pending .play-link__label,
+.play-link--pending .play-link__value {
+  color: var(--gold);
+}
+
+/* 配错了要当场看得见：不匹配用红色虚线，和「隔断」的灰色虚线区分开。 */
+.play-link--mismatch .play-link__label,
+.play-link--mismatch .play-link__value {
+  color: oklch(78% 0.13 25);
+}
+
+.play-link--mismatch .play-link__line {
+  background: repeating-linear-gradient(90deg, oklch(60% 0.18 25) 0 4px, transparent 4px 9px);
+}
+
+.play-link--pending .play-link__line {
+  background: var(--gold);
+  animation: link-pulse var(--dur-slow) ease-in-out infinite alternate;
+}
+
+@keyframes link-pulse {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- 伤害预览 ---------- */
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-soft);
+  background: linear-gradient(180deg, var(--surface-3), var(--surface-1));
+  min-height: 0;
+}
+
+.preview__rows {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.preview__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  font-size: var(--size-sm);
+}
+
+.preview__row dt {
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.preview__row dd {
+  margin: 0;
+  font-size: var(--size-md);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.preview__rule {
+  height: 1px;
+  margin: var(--sp-1) 0;
+  background: var(--line-soft);
+}
+
+.preview__row--hp dd {
+  color: var(--vermilion-text);
+}
+
+.preview__total {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: var(--sp-2) 0;
+}
+
+.preview__total-label {
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  letter-spacing: 0.24em;
+}
+
+.preview__total-value {
+  font-family: var(--font-serif);
+  font-size: var(--size-xl);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.preview__empty {
+  font-size: var(--size-sm);
+  color: var(--text-3);
+  line-height: 1.6;
+}
+
+.preview .btn {
+  width: 100%;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+}
+
+.preview__error {
+  font-size: var(--size-sm);
+  color: var(--vermilion-text);
+  line-height: 1.6;
+}
+
+/* ---------- 手牌带 ---------- */
+/* 吃掉出牌框之外剩下的全部高度：卡片按可用高度长，上限由 --card-max-h 收住，不至于顶到边框。 */
+.hand {
+  flex: 1 1 var(--hand-h);
+  min-height: var(--hand-min-h);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  overflow: hidden;
+}
+
+.hand__head {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.hand__title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.hand__title strong {
+  font-family: var(--font-serif);
+  font-size: var(--size-md);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.hand__meta {
+  font-size: var(--size-xs);
+  color: var(--text-3);
+}
+
+.hand__row {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: var(--sp-2);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* 卡与按钮条整体居中：高度富余时上下均分，卡片不会贴着任何一边。 */
+.hand__card {
+  position: relative;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.hand__card .card {
+  flex: 1 1 auto;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  max-height: var(--card-max-h);
+  aspect-ratio: 2 / 3;
+}
+
+.hand__acts {
+  flex: none;
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.hand__act {
+  flex: 1 1 auto;
+  min-height: 24px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-3);
+  color: var(--text-3);
+  font-size: var(--size-xs);
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+
+.hand__act:hover:not(:disabled) {
+  border-color: var(--gold-dim);
+  color: var(--text);
+}
+
+.hand__act[aria-pressed="true"] {
+  border-color: var(--danger);
+  background: var(--danger-deep);
+  color: oklch(98% 0.01 85);
+}
+
+.hand__act:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.hand__actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.hand__actions .hand__hint {
+  margin-left: auto;
+  font-size: var(--size-xs);
+  color: var(--text-3);
+}
+
+/* ---------- 底栏 ---------- */
+.statusbar {
+  flex: none;
+  height: var(--foot-h);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: 0 var(--sp-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-soft);
+  background: var(--surface-1);
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  overflow: hidden;
+}
+
+.statusbar strong {
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+/* 目标待指定时的整场提示条 */
+.pending-banner {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gold-dim);
+  background: var(--gold-ink);
+  color: var(--gold-text);
+  font-size: var(--size-sm);
+}
+
+.pending-banner button {
+  margin-left: auto;
+}
+
+/* ---------- 兵器配属选择 ---------- */
+.target-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.target-picker__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-6);
+  flex-wrap: wrap;
+}
+
+.target-picker__arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--text-3);
+  font-size: var(--size-xs);
+}
+
+.target-picker__arrow svg {
+  width: 34px;
+  height: 12px;
+}
+
+.target-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-soft);
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.target-option:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.target-option[aria-pressed="true"] {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}

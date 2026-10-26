@@ -1,0 +1,7 @@
+{
+  "handLimit": 8,
+  "playCount": 4,
+  "discardCount": 3,
+  "playSlotCount": 5,
+  "maxDiscardSelection": 5
+}

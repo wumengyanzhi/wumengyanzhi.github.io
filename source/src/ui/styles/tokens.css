@@ -1,0 +1,201 @@
+:root {
+  color-scheme: dark;
+
+  /* ---------- 底色：暖调大漆，不用纯黑 ---------- */
+  --surface-0: oklch(14% 0.014 55);
+  --surface-1: oklch(19% 0.018 55);
+  --surface-2: oklch(24% 0.021 55);
+  --surface-3: oklch(30% 0.024 55);
+  --surface-4: oklch(37% 0.027 55);
+
+  --line-soft: oklch(38% 0.02 60);
+  --line: oklch(47% 0.025 60);
+  --line-strong: oklch(60% 0.03 70);
+
+  /* ---------- 文字：全部 ≥ 4.5:1（对 surface-1 以上） ---------- */
+  --text: oklch(94% 0.012 85);
+  --text-2: oklch(83% 0.018 80);
+  --text-3: oklch(73% 0.022 75);
+
+  /* ---------- 语义色 ---------- */
+  --vermilion: oklch(56% 0.185 30);
+  --vermilion-deep: oklch(45% 0.165 28);
+  --vermilion-ink: oklch(30% 0.07 28);
+  --vermilion-text: oklch(86% 0.08 30);
+
+  --gold: oklch(80% 0.13 85);
+  --gold-dim: oklch(64% 0.1 85);
+  --gold-ink: oklch(30% 0.06 85);
+  --gold-text: oklch(88% 0.09 85);
+
+  --jade: oklch(64% 0.11 165);
+  --jade-ink: oklch(27% 0.05 165);
+  --jade-text: oklch(84% 0.09 165);
+
+  --indigo: oklch(58% 0.11 255);
+  --indigo-ink: oklch(27% 0.05 255);
+  --indigo-text: oklch(85% 0.08 255);
+
+  --danger: oklch(54% 0.19 25);
+  --danger-deep: oklch(44% 0.155 24);
+  --success: oklch(64% 0.13 155);
+  --warning: oklch(75% 0.13 78);
+
+  /* ---------- 阵营印章 ---------- */
+  --faction-shu: oklch(60% 0.115 150);
+  --faction-wei: oklch(55% 0.125 260);
+  --faction-wu: oklch(56% 0.155 32);
+  --faction-qun: oklch(56% 0.11 315);
+
+  /* ---------- 卡类型主色 ---------- */
+  --type-character: oklch(64% 0.105 72);
+  --type-weapon: oklch(66% 0.035 250);
+  --type-tactic: oklch(58% 0.145 16);
+
+  --type-character-ink: oklch(27% 0.045 72);
+  --type-weapon-ink: oklch(27% 0.03 250);
+  --type-tactic-ink: oklch(28% 0.055 16);
+
+  /* ---------- 匹配档位 ---------- */
+  --relation-main: var(--gold);
+  --relation-usable: var(--jade);
+  --relation-off: var(--indigo);
+  --relation-none: oklch(52% 0.02 60);
+
+  /* ---------- 字体 ---------- */
+  --font-title: "STKaiti", "KaiTi", "楷体", "STSong", "Songti SC", "SimSun", serif;
+  --font-serif: "STZhongsong", "Songti SC", "SimSun", "STSong", Georgia, serif;
+  --font-ui: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+
+  /* ---------- 字号：五档，rem 保证缩放 ---------- */
+  --size-xs: 0.75rem;
+  --size-sm: 0.8125rem;
+  --size-base: 0.875rem;
+  --size-md: 1rem;
+  --size-lg: 1.25rem;
+  --size-xl: 1.75rem;
+  --size-display: 2.25rem;
+
+  /* ---------- 间距：4px 基准 ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  /* ---------- 圆角与描边 ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* ---------- 动效：统一指数缓出 ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+
+  /* ---------- 尺寸：大屏（≥1440 宽 且 ≥860 高） ---------- */
+  --card-w: 128px;
+  --card-max-h: 240px;
+  --slot-w: 156px;
+  --slot-h: 172px;
+  --detail-w: 188px;
+  --detail-h: 262px;
+  --link-w: 36px;
+  --topbar-h: 84px;
+  --field-min-h: 212px;
+  --hand-h: 300px;
+  --hand-min-h: 220px;
+  --foot-h: 40px;
+  --band-gap: 14px;
+  --shell-pad: 14px;
+  --preview-w: 320px;
+}
+
+/*
+ * 高度三档递减：顶栏、底栏、出牌框一起让，手牌吃到剩下的全部空间。
+ * 每档都按「顶栏 + 出牌框下限 + 手牌下限 + 底栏」留够，矮屏不裁底栏、不整屏滚动。
+ */
+/* ---------- 紧凑档：1280 × 720 ---------- */
+@media (max-height: 820px) {
+  :root {
+    --size-xs: 0.75rem;
+    --size-sm: 0.8125rem;
+    --size-base: 0.875rem;
+    --size-md: 0.9375rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.5rem;
+    --size-display: 2rem;
+
+    --topbar-h: 78px;
+    --field-min-h: 192px;
+    --hand-h: 280px;
+    --hand-min-h: 190px;
+    --foot-h: 32px;
+    --band-gap: 10px;
+    --shell-pad: 10px;
+
+    --card-max-h: 214px;
+    --slot-h: 152px;
+    --detail-h: 240px;
+  }
+}
+
+/* ---------- 矮屏档：≤700 ---------- */
+@media (max-height: 700px) {
+  :root {
+    --topbar-h: 72px;
+    --field-min-h: 178px;
+    --hand-h: 240px;
+    --hand-min-h: 170px;
+    --foot-h: 30px;
+    --band-gap: 8px;
+    --shell-pad: 8px;
+
+    --card-max-h: 196px;
+    --slot-h: 138px;
+    --link-w: 28px;
+    --preview-w: 288px;
+  }
+}
+
+/* ---------- 极矮档：≤620 ---------- */
+@media (max-height: 620px) {
+  :root {
+    --topbar-h: 68px;
+    --field-min-h: 166px;
+    --hand-h: 220px;
+    --hand-min-h: 150px;
+    --foot-h: 28px;
+    --band-gap: 6px;
+    --shell-pad: 6px;
+
+    --card-max-h: 180px;
+    --slot-h: 126px;
+    --link-w: 24px;
+    --preview-w: 268px;
+  }
+}
+
+@media (max-width: 1380px) {
+  :root {
+    --card-w: 116px;
+    --slot-w: 142px;
+    --detail-w: 176px;
+    --link-w: 30px;
+    --preview-w: 300px;
+  }
+}
+
+/* 尊重系统降低动效偏好。 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

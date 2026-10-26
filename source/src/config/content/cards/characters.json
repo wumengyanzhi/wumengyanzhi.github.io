@@ -1,0 +1,158 @@
+[
+  {
+    "id": "three_kingdoms.character.shu_zhong_meng_shi",
+    "name": "蜀中猛士",
+    "cardType": "character",
+    "rarity": "common",
+    "faction": "shu",
+    "profession": "warrior",
+    "basePower": 20,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.character.shu_zhong_gong_shou",
+    "name": "蜀中弓手",
+    "cardType": "character",
+    "rarity": "common",
+    "faction": "shu",
+    "profession": "archer",
+    "basePower": 20,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.character.wei_ying_ce_shi",
+    "name": "魏营策士",
+    "cardType": "character",
+    "rarity": "common",
+    "faction": "wei",
+    "profession": "strategist",
+    "basePower": 20,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.character.wei_ying_su_wei",
+    "name": "魏营宿卫",
+    "cardType": "character",
+    "rarity": "common",
+    "faction": "wei",
+    "profession": "guard",
+    "basePower": 20,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.character.jiang_dong_gong_shou",
+    "name": "江东弓手",
+    "cardType": "character",
+    "rarity": "common",
+    "faction": "wu",
+    "profession": "archer",
+    "basePower": 20,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.character.jiang_dong_ce_shi",
+    "name": "江东策士",
+    "cardType": "character",
+    "rarity": "common",
+    "faction": "wu",
+    "profession": "strategist",
+    "basePower": 20,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.character.qun_xiong_meng_shi",
+    "name": "群雄猛士",
+    "cardType": "character",
+    "rarity": "common",
+    "faction": "qun",
+    "profession": "warrior",
+    "basePower": 20,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.character.qun_xiong_jian_ke",
+    "name": "群雄间客",
+    "cardType": "character",
+    "rarity": "common",
+    "faction": "qun",
+    "profession": "assassin",
+    "basePower": 20,
+    "effects": []
+  },
+  {
+    "id": "three_kingdoms.character.shu_zhong_xiao_jiang",
+    "name": "蜀中骁将",
+    "cardType": "character",
+    "rarity": "rare",
+    "faction": "shu",
+    "profession": "warrior",
+    "basePower": 30,
+    "effects": [
+      {
+        "effectId": "main_weapon_mastery",
+        "timing": "on_play",
+        "condition": { "type": "self_equipped_weapon_relation", "relation": "main" },
+        "operations": [
+          { "type": "add_power", "target": "self", "scope": "this_play", "value": 15 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "three_kingdoms.character.hu_wei_su_jiang",
+    "name": "虎卫宿将",
+    "cardType": "character",
+    "rarity": "rare",
+    "faction": "wei",
+    "profession": "guard",
+    "basePower": 25,
+    "effects": [
+      {
+        "effectId": "center_guard",
+        "timing": "on_play",
+        "condition": { "type": "self_adjacent_both", "cardType": "character" },
+        "operations": [
+          { "type": "add_power", "target": "self", "scope": "this_play", "value": 20 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "three_kingdoms.character.jiang_dong_zhi_jiang",
+    "name": "江东智将",
+    "cardType": "character",
+    "rarity": "rare",
+    "faction": "wu",
+    "profession": "strategist",
+    "basePower": 30,
+    "effects": [
+      {
+        "effectId": "coordinated_plan",
+        "timing": "on_play",
+        "condition": { "type": "play_contains_card_type", "cardType": "tactic", "min": 1 },
+        "operations": [
+          { "type": "add_power", "target": "self", "scope": "this_play", "value": 15 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "three_kingdoms.character.sai_wai_shen_she",
+    "name": "塞外神射",
+    "cardType": "character",
+    "rarity": "rare",
+    "faction": "qun",
+    "profession": "archer",
+    "basePower": 30,
+    "effects": [
+      {
+        "effectId": "waiting_volley",
+        "timing": "on_play",
+        "condition": { "type": "discarded_this_battle", "min": 1 },
+        "operations": [
+          { "type": "add_power", "target": "self", "scope": "this_play", "value": 15 }
+        ]
+      }
+    ]
+  }
+]

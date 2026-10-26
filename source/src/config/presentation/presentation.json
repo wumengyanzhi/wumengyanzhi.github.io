@@ -1,0 +1,17 @@
+{
+  "animation": {
+    "enabled": true,
+    "cardFlipMs": 220,
+    "damageTickMs": 420,
+    "cardMoveMs": 180,
+    "glowFadeMs": 260
+  },
+  "drag": {
+    "startThresholdPx": 6,
+    "snapDistancePx": 48
+  },
+  "card": {
+    "hoverScale": 1.06,
+    "glowIntensity": 0.6
+  }
+}

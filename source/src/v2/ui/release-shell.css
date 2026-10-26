@@ -1,0 +1,133 @@
+.v2-app .v2-route-page {
+  padding-bottom: max(48px, calc(28px + env(safe-area-inset-bottom)));
+}
+
+.v2-route-page > .v2-eyebrow { margin-bottom: 12px; }
+.v2-route-page > h2 { text-wrap: balance; }
+.v2-route-page > .v2-route-intro { line-height: 1.85; }
+.v2-route-page > .v2-primary,
+.v2-route-page > .v2-secondary { min-height: 48px; }
+.v2-route-page details { text-align: left; }
+
+.v2-app .v2-menu-actions .v2-menu-training {
+  justify-content: space-between;
+  border: 1px solid #89764b77;
+  background: #25271ee0;
+  color: #dfd1b2;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.v2-app .v2-menu-training:hover:enabled { background: #343528; }
+.v2-menu-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.v2-app .v2-menu-nav button { min-width: 0; padding-right: 0; }
+.v2-menu-nav small { letter-spacing: 0; }
+.v2-menu-footer { white-space: normal; line-height: 1.8; }
+
+.v2-app .v2-new-run { max-width: 1140px; }
+.v2-new-run .v2-deck-options { gap: 18px; margin: 28px 0 32px; }
+.v2-app .v2-deck-option { min-width: 0; min-height: 214px; padding: 22px; }
+.v2-deck-option p { font-size: 13px; line-height: 1.8; }
+.v2-new-run-bottom {
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 1fr);
+  gap: 44px;
+  align-items: start;
+}
+.v2-leader-selection > .v2-eyebrow { margin: 0 0 8px; }
+.v2-leader-selection > p:not(.v2-eyebrow) { margin: 8px 0 20px; font-size: 13px; }
+.v2-initial-leaders { align-items: flex-start; gap: 18px; }
+.v2-app .v2-initial-leaders > button { align-items: center; padding: 6px; }
+.v2-initial-leaders > button > span { padding: 12px 2px 4px; line-height: 1.85; }
+.v2-app .v2-start-panel { padding: 26px; background: linear-gradient(135deg, #353324, #25271f); }
+.v2-start-panel > .v2-eyebrow { margin: 0 0 10px; }
+.v2-start-panel h3 { color: var(--gold); }
+.v2-new-run .v2-start-leader { margin: 8px 0 24px; font-size: 14px; color: var(--paper); }
+.v2-start-panel label { font-size: 13px; }
+.v2-start-panel > p { line-height: 1.85; }
+.v2-start-panel > .v2-primary { min-height: 50px; margin-top: 6px; }
+.v2-start-panel > .v2-local-save-note { margin: 12px 0 0; text-align: center; font-size: 11px; }
+.v2-deck-list { margin-top: 30px; border-top: 1px solid var(--line); color: var(--muted); }
+.v2-deck-list p { font-size: 12px; line-height: 2; padding: 0 8px; }
+
+.v2-reward-grid { align-items: stretch; }
+.v2-reward-card { gap: 16px; }
+.v2-reward-card p { line-height: 1.85; }
+.v2-market .v2-route-intro b { display: block; margin-top: 8px; color: var(--gold); }
+.v2-market-grid { gap: 22px; }
+.v2-market-item { min-width: 0; }
+.v2-services article > div { min-width: 0; }
+.v2-services p { line-height: 1.8; }
+.v2-camp > p { line-height: 1.85; color: var(--muted); }
+.v2-result-records > div { padding-block: 13px; }
+.v2-result > button { margin-bottom: 8px; }
+.v2-history-list article > div { min-width: 0; }
+.v2-settings > h3 { margin-top: 32px; }
+.v2-settings > p { line-height: 1.85; color: var(--muted); }
+
+@media (max-width: 900px) and (min-width: 761px) {
+  .v2-new-run .v2-deck-options { gap: 12px; }
+  .v2-app .v2-deck-option { padding: 18px; }
+  .v2-deck-option h3 { font-size: 22px; }
+  .v2-new-run-bottom { gap: 28px; grid-template-columns: minmax(0, 1.2fr) minmax(250px, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .v2-menu-copy {
+    padding-top: max(32px, env(safe-area-inset-top));
+    padding-bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
+  }
+  .v2-menu-nav { gap: 9px; }
+  .v2-app .v2-menu-nav button { font-size: 12px; }
+  .v2-menu-nav small { font-size: 10px; line-height: 1.6; }
+  .v2-app .v2-menu-actions .v2-menu-training { min-height: 46px; font-size: 12px; }
+  .v2-app .v2-route-page { padding-inline: max(16px, env(safe-area-inset-left), env(safe-area-inset-right)); }
+  .v2-new-run .v2-deck-options { gap: 12px; margin: 24px 0 28px; }
+  .v2-app .v2-deck-option { min-height: 0; padding: 16px 16px 16px 60px; }
+  .v2-deck-option p { font-size: 12px; }
+  .v2-new-run-bottom { grid-template-columns: minmax(0, 1fr); gap: 26px; padding-top: 24px; }
+  .v2-initial-leaders { gap: 14px; justify-content: center; }
+  .v2-app .v2-initial-leaders > button { width: calc(50% - 7px); padding: 4px; }
+  .v2-initial-leaders > button > span { font-size: 11px; line-height: 1.8; }
+  .v2-app .v2-start-panel { padding: 22px 18px; }
+  .v2-start-panel h3 { font-size: 22px; }
+  .v2-start-panel > .v2-primary { min-height: 50px; }
+  .v2-deck-list { margin-top: 24px; }
+  .v2-reward-card { gap: 10px 14px; }
+  .v2-market-grid { gap: 14px; }
+  .v2-services article { flex-wrap: wrap; }
+  .v2-services article > div { flex-basis: calc(100% - 48px); }
+  .v2-services article > button { margin-left: 45px; min-height: 44px; }
+  .v2-result > .v2-primary { margin-right: 8px; min-width: 0; }
+  .v2-settings-controls label { gap: 16px; }
+}
+
+@media (max-width: 360px) {
+  .v2-menu-copy { padding-inline: 24px; }
+  .v2-app .v2-menu-nav button { font-size: 11px; }
+  .v2-menu-nav small { font-size: 9px; }
+  .v2-initial-leaders { gap: 10px; }
+  .v2-app .v2-initial-leaders > button { width: calc(50% - 5px); }
+  .v2-result-stats strong { font-size: 21px; }
+  .v2-reward-steps { gap: 8px; letter-spacing: 1px; }
+}
+.v2-battle-steps { display: flex; align-items: center; gap: 22px; }
+.v2-campaign-progress { flex-direction: column; gap: 7px; min-width: 0; }
+.v2-chapter-steps { display: flex; gap: 16px; font-size: 11px; color: var(--muted); }
+.v2-chapter-steps b { font-weight: 400; padding: 1px 5px; border-radius: 2px; white-space: nowrap; }
+.v2-chapter-steps .v2-current { color: var(--gold); background: transparent; box-shadow: none; border-bottom: 1px solid var(--gold); }
+.v2-chapter-boss { text-align: left; color: var(--muted); font-size: 12px; }
+.v2-chapter-boss summary { min-height: 28px; padding: 4px 0; font-size: 11px; }
+.v2-charm-reward-card { min-width: 0; }
+@media (max-width: 760px) {
+  .v2-battle-steps { gap: 6px; }
+  .v2-campaign-progress { gap: 4px; flex-shrink: 1; }
+  .v2-chapter-steps { gap: 5px; font-size: 9px; }
+  .v2-chapter-steps b { padding: 0 2px; }
+  .v2-app .v2-reward-card .v2-art-button { grid-column: 1; grid-row: 1 / span 4; }
+  .v2-reward-card > :not(.v2-art-button):not(.v2-market-art) { grid-column: 2; min-width: 0; }
+  .v2-charm-reward-card .v2-market-art { grid-column: 1; grid-row: 1 / span 3; width: 80px; height: 80px; }
+}
+
+.v2-enhancement-reroll { margin-top: 22px; text-align: center; color: var(--muted); }
+.v2-enhancement-reroll p { margin: 10px 0 5px; }
+.v2-enhancement-target { color: var(--muted); font-size: 12px; margin: 0; }

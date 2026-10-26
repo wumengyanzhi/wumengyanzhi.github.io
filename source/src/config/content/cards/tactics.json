@@ -1,0 +1,65 @@
+[
+  {
+    "id": "three_kingdoms.tactic.lei_gu_jin_jun",
+    "name": "擂鼓进军",
+    "cardType": "tactic",
+    "rarity": "rare",
+    "tacticDirection": "power",
+    "basePower": 20,
+    "baseAmp": 0,
+    "effects": [
+      {
+        "effectId": "outnumber",
+        "timing": "on_play",
+        "condition": { "type": "always" },
+        "operations": [
+          {
+            "type": "add_power",
+            "target": "zone",
+            "scope": "this_play",
+            "value": 0,
+            "scale": { "countCardType": "character", "each": 5, "max": 20 }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "three_kingdoms.tactic.zuo_you_ce_ying",
+    "name": "左右策应",
+    "cardType": "tactic",
+    "rarity": "rare",
+    "tacticDirection": "amp",
+    "basePower": 0,
+    "baseAmp": 4,
+    "effects": [
+      {
+        "effectId": "flank_support",
+        "timing": "on_play",
+        "condition": { "type": "self_adjacent_both", "cardType": "character" },
+        "operations": [
+          { "type": "add_amp", "target": "zone", "scope": "this_play", "value": 2 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "three_kingdoms.tactic.chou_cuo_jun_liang",
+    "name": "筹措军粮",
+    "cardType": "tactic",
+    "rarity": "rare",
+    "tacticDirection": "amp",
+    "basePower": 0,
+    "baseAmp": 4,
+    "effects": [
+      {
+        "effectId": "supply_prepare",
+        "timing": "after_resolve",
+        "condition": { "type": "play_contains_distinct_card_types", "min": 3 },
+        "operations": [
+          { "type": "gain_gold", "value": 1 }
+        ]
+      }
+    ]
+  }
+]

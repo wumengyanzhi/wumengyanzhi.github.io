@@ -1,0 +1,82 @@
+/* Reflow content inside the shared card box; the battle layout owns its dimensions. */
+.v2-card-face.v2-card-face {
+  container-type: inline-size;
+  justify-content: flex-start;
+  gap: 2px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.v2-card-face.v2-card-face > .v2-card-top {
+  flex: 0 0 auto;
+  min-height: 17px;
+  font-size: clamp(7px, 8cqi, 10px);
+  letter-spacing: 0;
+}
+
+.v2-card-face.v2-card-face > .v2-card-art {
+  flex: 1 1 0;
+  min-height: 0;
+  height: auto;
+  margin: 0;
+}
+
+.v2-card-face.v2-card-face > .v2-card-title {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  margin: 0;
+  font-size: clamp(10px, 15cqi, var(--battle-card-title, 18px));
+  line-height: 1.3;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.v2-card-face.v2-card-face .v2-card-name { min-width: 0; }
+.v2-card-face.v2-card-face .v2-card-title > small {
+  flex: 0 0 auto;
+  color: #4b4639;
+  font-family: var(--game-font-text);
+  font-size: clamp(7px, 8cqi, 10px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.v2-card-face.v2-card-face > .v2-card-stats {
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: clamp(8px, 11cqi, 13px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+.v2-card-face.v2-card-face .v2-card-power { color: #942f23; }
+.v2-card-face.v2-card-face .v2-card-amp { color: #185a70; }
+
+.v2-card-face.v2-card-face > .v2-card-skills {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  color: #39352b;
+  font-size: clamp(7px, 8.6cqi, 10px);
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+.v2-card-face.v2-card-face .v2-card-native-skill { white-space: nowrap; }
+.v2-card-face.v2-card-face .v2-card-enhancements { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; }
+.v2-card-face.v2-card-face .v2-card-enhancements > span {
+  border: 1px solid #75604f77;
+  border-radius: 2px;
+  padding-inline: 2px;
+  background: #f9eed399;
+  color: #633a60;
+  white-space: nowrap;
+}

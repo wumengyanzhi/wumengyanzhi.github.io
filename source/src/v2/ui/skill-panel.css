@@ -1,0 +1,71 @@
+.v2-skill-panel, .v2-battle-fixed .v2-skill-panel {
+  box-sizing: border-box; height: 100%; min-height: 0; min-width: 0; margin: 0; padding: 8px;
+  display: flex; flex-direction: column; gap: 8px; overflow: hidden;
+  border: 1px solid #716342; border-radius: 5px; background: #182520ed;
+}
+.v2-skill-panel .v2-skill-heading { flex: 0 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 4px; margin: 0; }
+.v2-skill-panel .v2-skill-heading h3 { margin: 0; font-size: 13px; color: #e7d4a8; }
+.v2-skill-panel .v2-skill-heading > span { font-size: 11px; color: #a8c9b8; }
+.v2-skill-panel .v2-skill-list { display: flex; flex: 1; flex-direction: column; gap: 6px; min-height: 0; min-width: 0; padding: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #6c7057 #182520; }
+.v2-skill-panel .v2-skill-cue { box-sizing: border-box; flex: 0 0 56px; height: 56px; width: 100%; max-width: none; min-width: 0; padding: 4px; display: flex; flex-direction: column; gap: 4px; border: 1px solid var(--skill-border, #5c625d); border-radius: 4px; background: #1c2723; opacity: 1; color: var(--skill-color, #a6aea7); }
+.v2-skill-panel .v2-skill-command-cue { height: 104px; flex-basis: 104px; }
+.v2-skill-panel .v2-skill-command-cue .v2-skill-actions { display: flex; }
+.v2-skill-panel .v2-skill-waiting { --skill-border: #59615d; --skill-color: #a4aaa7; }
+.v2-skill-panel .v2-skill-ready { --skill-border: #76b69a; --skill-color: #b4edcf; box-shadow: inset 0 0 10px #79caa610; }
+.v2-skill-panel .v2-skill-choose { --skill-border: #c6a15b; --skill-color: #f0cd88; }
+.v2-skill-panel .v2-skill-used { --skill-border: #54697a; --skill-color: #9aafbd; background: #202a31; }
+.v2-skill-panel .v2-skill-optional { --skill-border: #b7a06b; --skill-color: #ddcd9f; }
+.v2-skill-panel .v2-skill-passive { --skill-border: #658278; --skill-color: #b6cdc0; }
+.v2-skill-panel button.v2-skill-inspect { box-sizing: border-box; display: flex; align-items: center; gap: 7px; flex: 1; width: 100%; min-width: 0; min-height: 44px; margin: 0; padding: 2px; border: 0; border-radius: 3px; background: transparent; color: inherit; cursor: help; text-align: left; font: inherit; touch-action: pan-y; }
+.v2-skill-panel .v2-skill-emblem { flex: 0 0 28px; display: grid; place-items: center; width: 28px; height: 30px; border: 1px solid var(--skill-border); border-radius: 4px; font-size: 17px; color: var(--skill-color); }
+.v2-skill-panel .v2-skill-summary { display: flex; flex: 1; flex-direction: column; gap: 3px; min-width: 0; }
+.v2-skill-panel .v2-skill-summary strong { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 12px; color: #e2d7ba; }
+.v2-skill-panel .v2-skill-summary small { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 10px; color: #a8b4a8; }
+.v2-skill-panel .v2-skill-status { display: flex; flex: 0 0 42px; flex-direction: column; align-items: center; gap: 3px; font-size: 9px; color: var(--skill-color); }
+.v2-skill-panel .v2-skill-state-icon { display: grid; place-items: center; width: 18px; height: 18px; font-size: 18px; line-height: 1; }
+.v2-skill-panel .v2-skill-state-icon svg { width: 17px; height: 17px; }
+.v2-skill-panel .v2-skill-actions { display: none; gap: 4px; flex: 0 0 44px; min-width: 0; height: 44px; margin: 0; }
+.v2-battle-fixed .v2-skill-panel .v2-skill-actions button { box-sizing: border-box; flex: 1; min-width: 0; min-height: 44px; padding: 3px 4px; border: 1px solid #8a7d51; border-radius: 3px; background: #343a29; color: #f0d59b; font: 11px/1.2 var(--game-font-text); cursor: pointer; }
+.v2-battle-fixed .v2-skill-panel .v2-skill-actions button.v2-targeting { border-color: #a4e6c5; background: #2c4a3b; color: #dbf3dd; }
+.v2-skill-panel .v2-skill-action-icon { display: none; }
+.v2-skill-panel button:focus-visible { outline: 2px solid #f1d58f; outline-offset: -2px; }
+.v2-skill-panel button:disabled { opacity: .45; cursor: default; }
+.v2-skill-panel .v2-skill-empty { box-sizing: border-box; flex: 0 0 104px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 1px dashed #4e5b4e; border-radius: 4px; background: #14211b; color: #7e9282; }
+.v2-skill-panel .v2-skill-empty > span { font-size: 24px; }
+.v2-skill-panel .v2-skill-empty small { font-size: 11px; }
+/* Portals live outside the app shell and carry their own complete theme. */
+.v2-skill-detail { z-index: 1100; box-sizing: border-box; width: 320px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 124px); overflow-y: auto; overscroll-behavior: contain; padding: 16px; border: 1px solid #8c9d7d; border-radius: 7px; background: #192b24fa; box-shadow: 0 14px 38px #0009; color: #e5ddc4; font: 13px/1.7 var(--game-font-text); text-align: left; }
+.v2-skill-detail header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.v2-skill-detail h3 { margin: 0 0 6px; font-size: 18px; color: #f3dca5; }
+.v2-skill-detail small { font-size: 11px; color: #acbcab; }
+.v2-skill-detail header button { flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 1px solid #687c67; border-radius: 4px; background: #263c30; color: #e6e2c7; font: 24px var(--game-font-text); cursor: pointer; }
+.v2-skill-detail button:focus-visible { outline: 2px solid #f1d58f; outline-offset: 2px; }
+.v2-skill-detail p { margin: 8px 0 12px; white-space: normal; overflow-wrap: anywhere; }
+.v2-skill-detail-state { font-size: 12px; color: #c4d4c1; }
+.v2-skill-detail-ready .v2-skill-detail-state { color: #a9e5c2; }
+.v2-skill-detail-choose .v2-skill-detail-state { color: #efcd87; }
+.v2-skill-detail-used .v2-skill-detail-state { color: #a1bccc; }
+.v2-skill-detail .v2-skill-rule { padding-top: 10px; border-top: 1px solid #52604c; color: #ede3c4; }
+.v2-skill-detail .v2-skill-detail-note { color: #b7c4ac; font-size: 11px; }
+@media (max-width: 760px) {
+  .v2-skill-panel, .v2-battle-fixed .v2-skill-panel { padding: 2px; gap: 4px; }
+  .v2-skill-panel .v2-skill-heading { flex-basis: 22px; justify-content: center; }
+  .v2-skill-panel .v2-skill-heading h3 { font-size: 10px; letter-spacing: 0; }
+  .v2-skill-panel .v2-skill-heading > span { display: none; }
+  .v2-skill-panel .v2-skill-list { gap: 4px; scrollbar-width: none; }
+  .v2-skill-panel .v2-skill-cue { height: 52px; flex-basis: 52px; padding: 0; gap: 2px; }
+  .v2-skill-panel .v2-skill-command-cue { height: 142px; flex-basis: 142px; }
+  .v2-skill-panel button.v2-skill-inspect { flex: 0 0 48px; height: 48px; padding: 1px; justify-content: center; position: relative; }
+  .v2-skill-panel .v2-skill-emblem { width: 26px; height: 28px; flex-basis: 26px; font-size: 17px; }
+  .v2-skill-panel .v2-skill-summary, .v2-skill-panel .v2-skill-state-label { display: none; }
+  .v2-skill-panel .v2-skill-status { position: absolute; right: 1px; bottom: 0; width: 17px; height: 17px; }
+  .v2-skill-panel .v2-skill-state-icon { width: 16px; height: 16px; background: #182820; border-radius: 50%; font-size: 15px; }
+  .v2-skill-panel .v2-skill-actions { flex-direction: column; height: 90px; flex-basis: 90px; gap: 2px; }
+  .v2-battle-fixed .v2-skill-panel .v2-skill-actions button { flex: 0 0 44px; width: 44px; padding: 0; min-height: 44px; font-size: 21px; align-self: center; }
+  .v2-skill-panel .v2-skill-action-icon { display: inline; }
+  .v2-skill-panel .v2-skill-action-label { display: none; }
+  .v2-skill-panel .v2-skill-empty { height: 142px; flex-basis: 142px; }
+  .v2-skill-panel .v2-skill-empty small { font-size: 9px; writing-mode: vertical-rl; }
+}
+
+

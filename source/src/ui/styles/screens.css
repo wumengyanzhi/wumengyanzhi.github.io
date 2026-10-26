@@ -1,0 +1,325 @@
+/* ---------- 主菜单 ---------- */
+.menu-screen {
+  flex: 1 1 auto;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+
+.menu-card {
+  width: min(760px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: var(--sp-10) var(--sp-8) var(--sp-8);
+  text-align: center;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(120% 70% at 50% 0%, oklch(28% 0.03 55) 0%, transparent 70%),
+    linear-gradient(180deg, var(--surface-2), var(--surface-1));
+  box-shadow: 0 30px 80px oklch(8% 0.02 40 / 0.55);
+}
+
+.menu-title {
+  font-family: var(--font-title);
+  font-size: var(--size-display);
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--gold);
+}
+
+.menu-sub {
+  margin-top: var(--sp-2);
+  font-size: var(--size-sm);
+  color: var(--text-3);
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+}
+
+.menu-rule {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin: var(--sp-6) 0;
+  color: var(--line);
+}
+
+.menu-rule::before,
+.menu-rule::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-soft), transparent);
+}
+
+.menu-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin: 0 auto var(--sp-6);
+  max-width: 380px;
+}
+
+.menu-actions > * {
+  justify-content: center;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+}
+
+.menu-run {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+  font-size: var(--size-sm);
+  color: var(--text-3);
+}
+
+.menu-run strong {
+  color: var(--gold-text);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  cursor: pointer;
+  font-size: var(--size-sm);
+  color: var(--text-2);
+}
+
+.menu-note {
+  margin-top: var(--sp-5);
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  line-height: 1.7;
+}
+
+.menu-files {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+}
+
+/* ---------- 三战进度（完整版） ---------- */
+.runmap--lg .runmap__pip {
+  width: 56px;
+  height: 30px;
+  font-size: var(--size-sm);
+}
+
+.runmap--lg .runmap__label {
+  font-size: var(--size-xs);
+}
+
+/* ---------- 战后强化三选一 ---------- */
+.reward-screen {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-5);
+  min-height: 0;
+  overflow: auto;
+}
+
+.reward-head {
+  text-align: center;
+}
+
+.reward-head h2 {
+  font-family: var(--font-serif);
+  font-size: var(--size-lg);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  color: var(--gold);
+}
+
+.reward-head p {
+  margin-top: var(--sp-2);
+  font-size: var(--size-sm);
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+}
+
+.reward-grid {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-5);
+  flex-wrap: wrap;
+}
+
+.reward-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-5) var(--sp-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--surface-3), var(--surface-1));
+  cursor: pointer;
+  transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.reward-card:hover,
+.reward-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 18px 40px oklch(8% 0.02 40 / 0.55);
+}
+
+.reward-card__tier {
+  align-self: stretch;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: var(--radius-sm);
+  font-size: var(--size-xs);
+  letter-spacing: 0.2em;
+}
+
+.reward-card--common .reward-card__tier {
+  background: var(--surface-4);
+  color: var(--text-2);
+}
+
+.reward-card--rare .reward-card__tier {
+  background: var(--indigo-ink);
+  border: 1px solid oklch(46% 0.08 255);
+  color: var(--indigo-text);
+}
+
+.reward-card--legendary .reward-card__tier {
+  background: var(--gold-ink);
+  border: 1px solid var(--gold-dim);
+  color: var(--gold-text);
+}
+
+.reward-card__boost {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  font-size: var(--size-md);
+}
+
+.reward-card__boost strong {
+  font-family: var(--font-serif);
+  font-size: var(--size-lg);
+  font-weight: 600;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.reward-card__skill {
+  font-size: var(--size-xs);
+  line-height: 1.65;
+  color: var(--text-2);
+  text-align: center;
+  max-width: 240px;
+}
+
+.reward-card__skill strong {
+  display: block;
+  color: var(--gold-text);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.reward-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.reward-actions p {
+  font-size: var(--size-xs);
+  color: var(--text-3);
+}
+
+/* ---------- 结算 ---------- */
+.result-screen {
+  flex: 1 1 auto;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  overflow: auto;
+}
+
+.result-card {
+  width: min(640px, 100%);
+  padding: var(--sp-8);
+  text-align: center;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
+  box-shadow: 0 30px 80px oklch(8% 0.02 40 / 0.55);
+}
+
+.result-title {
+  font-family: var(--font-title);
+  font-size: var(--size-display);
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+}
+
+.result-title--won {
+  color: var(--gold);
+}
+
+.result-title--lost {
+  color: var(--vermilion-text);
+}
+
+.result-sub {
+  margin-top: var(--sp-2);
+  font-size: var(--size-sm);
+  color: var(--text-3);
+  letter-spacing: 0.18em;
+}
+
+.result-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-6);
+  margin: var(--sp-6) 0;
+}
+
+.result-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 96px;
+  padding: var(--sp-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-soft);
+  background: var(--surface-2);
+}
+
+.result-stat__label {
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+}
+
+.result-stat__value {
+  font-size: var(--size-lg);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}

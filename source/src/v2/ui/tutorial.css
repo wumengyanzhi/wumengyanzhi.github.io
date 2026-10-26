@@ -1,0 +1,59 @@
+.v2-training { width: 100%; min-width: 0; padding-bottom: 12px; }
+.v2-training-toolbar { max-width: 1380px; margin: auto; padding: 6px 30px; display: flex; justify-content: space-between; align-items: center; gap: 10px; color: var(--muted); font-size: 12px; }
+.v2-training-toolbar > div { display: flex; flex-wrap: wrap; gap: 6px; }
+.v2-training-toolbar button { min-height: 40px; padding: 6px 12px; background: transparent; border: 0; font-size: 12px; }
+.v2-training-guide { max-width: 1320px; margin: 4px auto 12px; padding: 18px 22px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 24px; border: 1px solid #8c75494d; border-left: 3px solid var(--gold); background: linear-gradient(110deg, #353124, #23251e); }
+.v2-training-chapters { grid-column: 1 / -1; display: flex; gap: 24px; padding: 0; margin: 0; list-style: none; color: var(--muted); font-size: 11px; }
+.v2-training-chapters li { display: flex; align-items: center; gap: 7px; }
+.v2-training-chapters b { display: inline-grid; place-items: center; width: 21px; height: 21px; border: 1px solid #797057; border-radius: 50%; font-weight: 400; }
+.v2-training-chapters [aria-current] { color: var(--cream); }
+.v2-training-chapters [aria-current] b { color: #24251c; background: var(--gold); border-color: var(--gold); }
+.v2-training .v2-done { color: #c4d0a3; }
+.v2-training-guide-copy { min-width: 0; }
+.v2-training-guide .v2-eyebrow { margin: 0 0 5px; }
+.v2-training .v2-training-guide h2 { font-size: 26px; letter-spacing: 2px; margin: 3px 0 8px; }
+.v2-training-guide .v2-training-goal { font-size: 15px; line-height: 1.7; margin: 0 0 4px; }
+.v2-training-guide .v2-training-tip { color: var(--muted); font-size: 12px; line-height: 1.7; margin: 4px 0; }
+.v2-training-controls { align-self: center; display: flex; flex-direction: column; gap: 7px; min-width: 160px; }
+.v2-training-controls button { min-height: 44px; font-size: 13px; }
+.v2-training-controls small { text-align: center; font-size: 11px; color: var(--muted); max-width: 180px; }
+.v2-training-checklist { display: flex; gap: 16px; margin: 10px 0 4px; font-size: 12px; color: var(--muted); }
+.v2-training-comparison { font-size: 13px; color: var(--gold); margin: 8px 0 0; }
+.v2-training-hint { margin: 8px 0 0; padding: 10px 12px; font-size: 12px; line-height: 1.8; background: #171b1599; border-left: 2px solid #b99a5f; }
+.v2-training-welcome { margin-block: 40px; padding: 32px; }
+.v2-training-welcome .v2-training-guide-copy { padding-block: 20px; }
+.v2-training-welcome .v2-training-guide-copy h2 { font-size: 36px; }
+.v2-training-camp { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 30px; }
+.v2-training-camp > .v2-card-face { width: 144px; height: 202px; flex-shrink: 0; }
+.v2-training-camp p { color: var(--muted); max-width: 430px; line-height: 1.8; }
+.v2-training-save { padding: 8px 14px; text-align: center; font-size: 10px; color: var(--muted); line-height: 1.8; }
+.v2-training .v2-training-next { position: sticky; bottom: 0; z-index: 8; align-items: center; padding: 10px 0; background: #191b16f5; border-top: 1px solid var(--line); }
+.v2-training-next > span { flex: 1; font-size: 12px; color: var(--muted); text-align: center; }
+.v2-teaching-formation .v2-formation, .v2-teaching-cards .v2-hand, .v2-teaching-preview .v2-preview { outline: 1px solid #c8aa68; outline-offset: 4px; border-radius: 2px; }
+.v2-teaching-play .v2-play, .v2-teaching-discard .v2-battle-actions > button:first-child { box-shadow: 0 0 0 2px #dac17a80; }
+@media (max-width: 760px) {
+  .v2-training-toolbar { padding: 3px 12px; font-size: 10px; align-items: flex-start; }
+  .v2-training-toolbar > span { padding-top: 12px; white-space: nowrap; }
+  .v2-training-toolbar > div { justify-content: flex-end; gap: 0; }
+  .v2-training-toolbar button { min-height: 44px; font-size: 10px; padding: 5px 7px; }
+  .v2-training-guide { margin: 4px 12px 12px; padding: 12px; gap: 9px; grid-template-columns: minmax(0, 1fr); }
+  .v2-training-chapters { gap: 14px; font-size: 10px; }
+  .v2-training-chapters li { gap: 4px; }
+  .v2-training-chapters b { width: 18px; height: 18px; }
+  .v2-training .v2-training-guide h2 { font-size: 21px; margin-bottom: 5px; }
+  .v2-training-guide .v2-training-goal { font-size: 13px; }
+  .v2-training-guide .v2-training-tip { font-size: 11px; }
+  .v2-training-guide .v2-eyebrow { font-size: 9px; letter-spacing: 1px; }
+  .v2-training-controls { flex-direction: row; flex-wrap: wrap; align-items: center; min-width: 0; }
+  .v2-training-controls > button { flex: 1; min-width: 110px; font-size: 12px; }
+  .v2-training-controls small { flex: 1; font-size: 10px; text-align: left; }
+  .v2-training-welcome { margin-block: 24px; padding: 20px; }
+  .v2-training-welcome .v2-training-guide-copy { padding-block: 12px; }
+  .v2-training-welcome .v2-training-guide-copy h2 { font-size: 30px; }
+  .v2-training-camp { padding: 16px; gap: 16px; align-items: flex-start; }
+  .v2-training-camp > .v2-card-face { width: 104px; height: 146px; }
+  .v2-training-camp h3 { font-size: 17px; }
+  .v2-training-camp p { font-size: 11px; }
+  .v2-training-camp button { width: 100%; min-height: 44px; font-size: 12px; padding: 8px; }
+  .v2-training-save { font-size: 9px; }
+}

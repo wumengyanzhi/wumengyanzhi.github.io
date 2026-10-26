@@ -1,0 +1,15 @@
+{
+  "relationAmp": {
+    "main": 4,
+    "usable": 2,
+    "off": 1,
+    "none": 0
+  },
+  "matrix": {
+    "warrior": { "blade": "main", "spear": "usable", "bow": "none", "implement": "none", "hidden": "off" },
+    "archer": { "blade": "none", "spear": "none", "bow": "main", "implement": "none", "hidden": "usable" },
+    "strategist": { "blade": "off", "spear": "none", "bow": "none", "implement": "main", "hidden": "usable" },
+    "assassin": { "blade": "usable", "spear": "none", "bow": "none", "implement": "none", "hidden": "main" },
+    "guard": { "blade": "usable", "spear": "main", "bow": "none", "implement": "off", "hidden": "none" }
+  }
+}

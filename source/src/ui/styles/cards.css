@@ -1,0 +1,477 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: var(--card-w);
+  min-width: 0;
+  padding: 5px 6px 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(125% 62% at 50% 0%, hsl(var(--card-hue, 60) 30% 26%) 0%, transparent 72%),
+    linear-gradient(180deg, var(--surface-3), var(--surface-1));
+  color: var(--text);
+  text-align: center;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+/*
+ * 类型三重编码：颜色 + 形状 + 文字，缺任何一个都能分辨。
+ * 人物圆角、兵器直角、战术斜切，色弱与黑白打印下也不会混。
+ */
+.card--character {
+  --type-color: var(--type-character);
+  --type-ink: var(--type-character-ink);
+  --type-radius: 999px;
+}
+
+.card--weapon {
+  --type-color: var(--type-weapon);
+  --type-ink: var(--type-weapon-ink);
+  --type-radius: 2px;
+}
+
+.card--weapon .card__name {
+  color: oklch(84% 0.03 250);
+}
+
+.card--tactic {
+  --type-color: var(--type-tactic);
+  --type-ink: var(--type-tactic-ink);
+  --type-radius: 2px 10px 2px 10px;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: calc(var(--radius-md) - 3px);
+  border: 1px solid hsl(var(--card-hue, 60) 22% 42%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.card--rare {
+  border-color: var(--gold-dim);
+}
+
+.card--rare::after {
+  border-color: oklch(66% 0.11 85 / 0.75);
+  opacity: 1;
+}
+
+/* 左侧类型色条：一眼扫过整排手牌就能按类型分堆。 */
+.card {
+  border-left: 3px solid var(--type-color, var(--line));
+}
+
+/* ---------- 顶部冠饰：类型徽 + 阵营章 ---------- */
+.card__crown {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  max-width: calc(100% - 10px);
+  z-index: 1;
+}
+
+.card__type {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--type-radius, var(--radius-sm));
+  border: 1px solid var(--type-color);
+  background: var(--type-ink);
+  color: var(--type-color);
+  font-size: var(--size-xs);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+}
+
+.card__seal {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  border: 1px solid oklch(72% 0.06 85 / 0.5);
+  background: var(--seal-bg, var(--vermilion-deep));
+  color: oklch(97% 0.01 85);
+  font-family: var(--font-title);
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.card__seal--shu {
+  --seal-bg: oklch(42% 0.1 150);
+}
+
+.card__seal--wei {
+  --seal-bg: oklch(40% 0.11 260);
+}
+
+.card__seal--wu {
+  --seal-bg: oklch(44% 0.14 30);
+}
+
+.card__seal--qun {
+  --seal-bg: oklch(42% 0.09 315);
+}
+
+.card__badges {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.card__badges .chip {
+  padding: 0 4px;
+  font-size: var(--size-xs);
+  line-height: 1.45;
+}
+
+/* 选中联动：这张牌跟当前选中的那张是什么关系。 */
+.card__pair {
+  padding: 0 5px;
+  border-radius: 999px;
+  border: 1px solid currentcolor;
+  background: oklch(14% 0.016 55 / 0.9);
+  font-size: var(--size-xs);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.card__pair--main {
+  color: var(--gold-text);
+}
+
+.card__pair--usable {
+  color: var(--jade-text);
+}
+
+.card__pair--off {
+  color: var(--indigo-text);
+}
+
+.card__pair--none {
+  color: var(--vermilion-text);
+  border-style: dashed;
+}
+
+/* 相性速查行：兵器写职业、人物写兵器，放下去之前就知道配不配。 */
+.card__match {
+  flex: none;
+  max-height: 2.6em;
+  overflow: hidden;
+  font-size: var(--size-xs);
+  line-height: 1.25;
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+
+.card__match--detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-2) 0;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  font-size: var(--size-sm);
+}
+
+.card__match-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--sp-2);
+}
+
+.card__match-label {
+  flex: none;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  color: var(--text-3);
+  font-size: var(--size-xs);
+}
+
+/* 图形是唯一能让步的部分：矮屏先压它，文字行永远有位置。 */
+.card__art {
+  flex: 1 1 auto;
+  display: grid;
+  place-items: center;
+  min-height: 18px;
+  margin-top: 22px;
+}
+
+.card__art svg {
+  width: 40px;
+  height: 40px;
+  opacity: 0.92;
+}
+
+.card__name {
+  flex: none;
+  font-family: var(--font-serif);
+  font-size: var(--size-md);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+}
+
+.card__meta {
+  flex: none;
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__stats {
+  flex: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.card__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 2px 0 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-soft);
+  background: oklch(16% 0.016 55 / 0.72);
+}
+
+.card__stat-label {
+  font-size: var(--size-xs);
+  color: var(--text-3);
+  line-height: 1.2;
+}
+
+.card__stat-value {
+  font-size: var(--size-md);
+  font-weight: 600;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.card__stat--power .card__stat-value {
+  color: var(--gold);
+}
+
+.card__stat--amp .card__stat-value {
+  color: var(--jade);
+}
+
+.card__stat--boosted {
+  border-color: var(--gold-dim);
+}
+
+/* ---------- 交互状态 ---------- */
+.card-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+}
+
+button.card:hover:not(:disabled),
+button.card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--gold-dim);
+  box-shadow: 0 10px 22px oklch(6% 0.02 40 / 0.5);
+}
+
+button.card[aria-pressed="true"] {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), 0 12px 26px oklch(6% 0.02 40 / 0.55);
+}
+
+button.card[aria-pressed="true"]::before {
+  content: "已选";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  translate: -50% 0;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: oklch(22% 0.04 85);
+  font-size: var(--size-xs);
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+}
+
+.card--discard {
+  border-color: var(--danger);
+  box-shadow: inset 0 0 0 1px oklch(46% 0.13 25);
+}
+
+.card--discard .card__art svg,
+.card--discard .card__name {
+  opacity: 0.72;
+}
+
+.card--pending {
+  animation: card-pulse var(--dur-slow) ease-in-out infinite alternate;
+  border-color: var(--gold);
+}
+
+@keyframes card-pulse {
+  from {
+    box-shadow: 0 0 0 0 oklch(80% 0.13 85 / 0.5);
+  }
+  to {
+    box-shadow: 0 0 0 6px oklch(80% 0.13 85 / 0);
+  }
+}
+
+.card--compact {
+  width: 100%;
+}
+
+/* 出牌框里的牌：图形让位，名称／类型／威力增幅三行字号不变。 */
+.card--compact .card__art {
+  min-height: 14px;
+}
+
+.card--compact .card__art svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* ---------- 详情 / 配属 大尺寸 ---------- */
+.card--large {
+  width: var(--detail-w);
+  padding: 8px 10px 10px;
+  gap: 6px;
+}
+
+.card--large .card__art {
+  margin-top: 22px;
+  min-height: 72px;
+}
+
+.card--large .card__art svg {
+  width: 62px;
+  height: 62px;
+}
+
+.card--large .card__name {
+  font-size: var(--size-lg);
+}
+
+.card--large .card__meta {
+  font-size: var(--size-sm);
+}
+
+.card--large .card__stat-value {
+  font-size: var(--size-lg);
+}
+
+.card--large .card__seal {
+  width: 26px;
+  height: 26px;
+  font-size: 16px;
+}
+
+/* ---------- 详情面板内容 ---------- */
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-4);
+}
+
+@media (min-width: 760px) {
+  .detail-grid {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.detail-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.detail-block-title {
+  font-family: var(--font-serif);
+  font-size: var(--size-md);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  padding-bottom: var(--sp-1);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.stat-layer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--sp-2) var(--sp-4);
+  font-size: var(--size-base);
+}
+
+.stat-layer dt {
+  color: var(--text-3);
+}
+
+.stat-layer dd {
+  margin: 0;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-list li {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--gold-dim);
+  background: var(--surface-2);
+  font-size: var(--size-base);
+  line-height: 1.65;
+}
+
+.skill-list li strong {
+  display: block;
+  color: var(--gold);
+  font-weight: 500;
+  font-family: var(--font-serif);
+  letter-spacing: 0.08em;
+}

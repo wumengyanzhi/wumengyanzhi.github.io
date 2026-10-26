@@ -1,0 +1,23 @@
+[
+  {
+    "id": "three_kingdoms.enemy.huang_jin_jun_zhen",
+    "name": "黄巾军阵",
+    "type": "normal",
+    "maxHp": 1200,
+    "behavior": "passive_health_race"
+  },
+  {
+    "id": "three_kingdoms.enemy.xi_liang_tie_qi",
+    "name": "西凉铁骑",
+    "type": "elite",
+    "maxHp": 2200,
+    "behavior": "passive_health_race"
+  },
+  {
+    "id": "three_kingdoms.enemy.hu_lao_mo_jiang",
+    "name": "虎牢魔将",
+    "type": "boss",
+    "maxHp": 3600,
+    "behavior": "passive_health_race"
+  }
+]

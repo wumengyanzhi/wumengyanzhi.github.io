@@ -1,0 +1,67 @@
+/* Local OFL web fonts. All game text uses the same families across devices. */
+@font-face {
+  font-family: 'Pojun Brush';
+  src: url('/fonts/poj-brush.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pojun Text';
+  src: url('/fonts/poj-text.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pojun Numerals';
+  src: url('/fonts/poj-text.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0025, U+002B-003A, U+003D, U+00D7, U+2212, U+FF0B-FF0F;
+}
+:root {
+  --game-font-numbers: 'Pojun Numerals', 'Pojun Text', 'Microsoft YaHei', sans-serif;
+  --game-font-heading: 'Pojun Numerals', 'Pojun Brush', 'Pojun Text', 'STKaiti', 'KaiTi', serif;
+  --game-font-text: 'Pojun Numerals', 'Pojun Text', 'STKaiti', 'KaiTi', 'Microsoft YaHei', 'PingFang SC', serif;
+}
+.v2-app { font-family: var(--game-font-text); }
+.v2-app h1, .v2-app h2, .v2-app h3 { font-family: var(--game-font-heading); font-weight: 400; }
+.v2-app .v2-menu-copy h1,
+.v2-app .v2-enemy-copy h2,
+.v2-app .v2-hud-wordmark,
+.v2-app .v2-wordmark,
+.v2-app .v2-card-name,
+.v2-app .v2-skill-summary strong,
+.v2-app .v2-rail-charm-copy strong,
+.v2-app .v2-skill-heading h3 {
+  font-family: var(--game-font-heading);
+  font-weight: 400;
+}
+.v2-app .v2-card-face .v2-card-title > small,
+.v2-app .v2-card-face .v2-card-stats,
+.v2-app .v2-card-face .v2-card-skills,
+.v2-app .v2-rule-text,
+.v2-app .v2-boss-intel-main > p,
+.v2-skill-detail,
+.v2-skill-detail button {
+  font-family: var(--game-font-text);
+}
+.v2-app .v2-battle-actions > button,
+.v2-app .v2-command-tools > button,
+.v2-app .v2-menu-actions > button {
+  font-family: var(--game-font-heading);
+  font-weight: 400;
+}
+.v2-app .v2-menu-copy h1 { letter-spacing: 8px; }
+.v2-skill-detail h3 { font-family: var(--game-font-heading); font-weight: 400; }
+.v2-app .v2-battle-fixed .v2-forecast-term > strong,
+.v2-app .v2-battle-fixed .v2-health-number,
+.v2-app .v2-battle-fixed .v2-resource-strip strong,
+.v2-app .v2-battle-fixed .v2-hud-gold,
+.v2-app .v2-battle-fixed .v2-command-tools b {
+  font-family: var(--game-font-numbers);
+  font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+}

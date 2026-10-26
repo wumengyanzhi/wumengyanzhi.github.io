@@ -1,0 +1,58 @@
+.v2-battle .v2-slot, .v2-battle .v2-hand-card { position: relative; }
+.v2-card-annotations { position: absolute; z-index: 3; top: 27%; left: 5px; right: 5px; display: grid; gap: 3px; pointer-events: none; }
+.v2-card-annotations:empty { display: none; }
+.v2-card-pairing, .v2-card-owner { display: block; padding: 3px 4px; border: 1px solid #80b6b0; border-radius: 3px; background: #183d3bf2; color: #e2ffef; font-size: 9px; line-height: 1.35; letter-spacing: 0; font-weight: 600; white-space: normal; overflow-wrap: anywhere; text-align: center; box-shadow: 0 2px 8px #0005; }
+.v2-card-pairing.v2-pairing-best { background: #194844f5; border-color: #b9ead2; }
+.v2-card-owner { background: #252c23ed; border-color: #acb590; color: #f4f2d3; }
+.v2-card-owner.v2-unassigned { background: #352d27ed; border-color: #b9a080; color: #f0d6b3; }
+.v2-skill-panel { min-width: 0; margin: 9px 0; padding: 9px 10px; border: 1px solid #554d36; border-left: 3px solid #b99a5c; background: #22251f; border-radius: 4px; }
+.v2-skill-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
+.v2-skill-heading h3 { margin: 0; font-size: 14px; letter-spacing: 1px; color: #ead2a2; }
+.v2-skill-heading > span { font-size: 11px; color: #cfc3a7; }
+.v2-skill-heading small { margin-left: 12px; font-size: 10px; color: #aaa48d; }
+.v2-app .v2-skill-toggle { display: none; }
+.v2-skill-list { display: flex; align-items: stretch; gap: 8px; overflow-x: auto; padding: 0 1px 4px; scrollbar-width: thin; scrollbar-color: #726142 #27281f; }
+.v2-skill-cue { flex: 1 0 220px; min-width: 0; max-width: 340px; padding: 8px 10px; background: #171c17; border: 1px solid #4a5040; border-radius: 3px; }
+.v2-skill-cue > header { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.v2-skill-cue strong { color: #e7dab9; font-size: 13px; }
+.v2-skill-cue header > span { font-size: 9px; color: #cac6ab; border: 1px solid #545747; border-radius: 2px; padding: 1px 4px; }
+.v2-skill-cue header > small { font-size: 10px; color: #aaa68f; margin-left: auto; }
+.v2-skill-cue p { margin: 5px 0 0; font-size: 11px; color: #c8c3af; line-height: 1.55; }
+.v2-skill-ready { border-color: #59836a; }
+.v2-skill-ready header > span { color: #bfe6c7; border-color: #52775e; }
+.v2-skill-choose { border-color: #d2aa61; }
+.v2-skill-choose header > span { color: #ffe0a0; }
+.v2-skill-used { opacity: .7; }
+.v2-skill-caution p { color: #edc198; }
+.v2-skill-actions { display: flex; gap: 7px; margin-top: 7px; }
+.v2-app .v2-skill-actions button { min-height: 34px; padding: 5px 10px; background: #3a3b28; border: 1px solid #8d794c; border-radius: 3px; font-size: 11px; color: #f3d69d; }
+.v2-app .v2-skill-actions button.v2-targeting { border-color: #b9ead2; color: #d3f7df; }
+.v2-target-banner { position: sticky; top: 0; z-index: 12; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 8px 0; padding: 10px 12px; border: 1px solid #a7d6bb; border-radius: 3px; background: #24382df5; color: #e1f7dc; font-size: 12px; }
+.v2-app .v2-target-banner button { flex-shrink: 0; min-height: 36px; padding: 5px 8px; border: 1px solid #9bad89; font-size: 11px; }
+.v2-battle .v2-skill-target { outline: 3px solid #a7edca; outline-offset: 2px; box-shadow: 0 0 20px #98dbc439; }
+.v2-selecting-target .v2-hand-card:not(.v2-skill-target), .v2-selecting-target .v2-slot-filled:not(.v2-skill-target) { opacity: .45; }
+.v2-last-play { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 14px; margin: 8px 0; padding: 9px 12px; border-left: 3px solid #739774; background: #243023; font-size: 12px; line-height: 1.6; color: #d1e2c2; }
+.v2-last-play > strong { color: #f0dda8; }
+.v2-last-play > details { flex-basis: 100%; }
+.v2-last-play summary { cursor: pointer; font-size: 10px; color: #b7c8a5; }
+.v2-last-play p { margin: 5px 0; }
+@media(max-width:760px) {
+  .v2-card-pairing, .v2-card-owner { font-size: 8px; padding: 2px; }
+  .v2-card-annotations { left: 4px; right: 4px; gap: 2px; }
+  .v2-skill-panel { padding: 5px 7px; margin: 6px 0; }
+  .v2-skill-heading { gap: 6px; margin-bottom: 4px; align-items: center; }
+  .v2-skill-heading h3 { font-size: 12px; }
+  .v2-skill-heading > span { font-size: 10px; margin-left: auto; }
+  .v2-skill-heading small { display: none; }
+  .v2-app .v2-skill-toggle { display: inline-flex; min-height: 28px; align-items: center; padding: 2px 5px; font-size: 10px; border: 1px solid #746443; border-radius: 3px; }
+  .v2-skill-cue { flex: 0 0 245px; padding: 4px 7px; }
+  .v2-skill-cue strong { font-size: 11px; }
+  .v2-skill-cue p { font-size: 10px; margin-top: 3px; }
+  .v2-skill-panel:not(.v2-skills-expanded) .v2-skill-cue p { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .v2-skills-expanded .v2-skill-cue p { white-space: normal; font-size: 11px; }
+  .v2-skill-actions { margin-top: 4px; }
+  .v2-app .v2-skill-actions button { min-height: 40px; }
+  .v2-target-banner { font-size: 11px; padding: 7px 8px; }
+  .v2-last-play { padding: 7px 9px; font-size: 11px; }
+}
+@media(prefers-reduced-motion:reduce) { .v2-skill-target { transition: none; } }

@@ -1,0 +1,37 @@
+{
+  "id": "three_kingdoms.run.three_battle_mvp",
+  "name": "三场战斗 MVP",
+  "startNodeId": "three_kingdoms.run_node.huang_jin_battle",
+  "nodes": [
+    {
+      "id": "three_kingdoms.run_node.huang_jin_battle",
+      "type": "battle",
+      "contentRef": "three_kingdoms.enemy.huang_jin_jun_zhen",
+      "nextNodeId": "three_kingdoms.run_node.after_huang_jin_reward"
+    },
+    {
+      "id": "three_kingdoms.run_node.after_huang_jin_reward",
+      "type": "reward",
+      "contentRef": "first_reward",
+      "nextNodeId": "three_kingdoms.run_node.xi_liang_battle"
+    },
+    {
+      "id": "three_kingdoms.run_node.xi_liang_battle",
+      "type": "battle",
+      "contentRef": "three_kingdoms.enemy.xi_liang_tie_qi",
+      "nextNodeId": "three_kingdoms.run_node.after_xi_liang_reward"
+    },
+    {
+      "id": "three_kingdoms.run_node.after_xi_liang_reward",
+      "type": "reward",
+      "contentRef": "second_reward",
+      "nextNodeId": "three_kingdoms.run_node.hu_lao_battle"
+    },
+    {
+      "id": "three_kingdoms.run_node.hu_lao_battle",
+      "type": "battle",
+      "contentRef": "three_kingdoms.enemy.hu_lao_mo_jiang",
+      "nextNodeId": null
+    }
+  ]
+}
